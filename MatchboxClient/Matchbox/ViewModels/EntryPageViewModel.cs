@@ -24,7 +24,7 @@ namespace Matchbox.ViewModels
 
             try
             {
-                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.TaskList());
+                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.UrhoPage());
             }
             catch (Exception ex)
             {
