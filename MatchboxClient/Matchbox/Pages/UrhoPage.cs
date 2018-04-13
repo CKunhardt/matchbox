@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -13,12 +14,12 @@ namespace Matchbox.Pages
     {
         Slider selectedBarSlider, rotationSlider;
         UrhoSurface urhoSurface;
-        MatchboxGame urhoApp;
+        Charts urhoApp;
 
         public UrhoPage()
         {
             var restartBtn = new Button { Text = "Restart" };
-            restartBtn.Clicked += (sender, e) => StartUrhoApp();
+            restartBtn.Clicked += async (sender, e) => await StartUrhoApp();
 
             urhoSurface = new UrhoSurface();
             urhoSurface.VerticalOptions = LayoutOptions.FillAndExpand;
@@ -67,12 +68,12 @@ namespace Matchbox.Pages
 
         protected override async void OnAppearing()
         {
-            StartUrhoApp();
+            await StartUrhoApp();
         }
 
-        async void StartUrhoApp()
+        async Task StartUrhoApp()
         {
-            urhoApp = await urhoSurface.Show<MatchboxGame>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+            urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
         }
     }
 }

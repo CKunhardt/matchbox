@@ -9,7 +9,7 @@ using Matchbox.Components;
 
 namespace Matchbox
 {
-    public class MatchboxGame : Application
+    public class Charts : Application
     {
         bool movementsEnabled;
         Scene scene;
@@ -22,9 +22,9 @@ namespace Matchbox
 
         public IEnumerable<MBBar> Bars => bars;
 
-        public MatchboxGame(ApplicationOptions options = null) : base(options) { }
+        public Charts(ApplicationOptions options = null) : base(options) { }
 
-        static MatchboxGame()
+        static Charts()
         {
             UnhandledException += (s, e) =>
             {
