@@ -40,6 +40,8 @@
     <Compile Include="Apps\Matchboxes.cs" />
     <Compile Include="Apps\Charts.cs" />
     <Compile Include="Components\MBBar.cs" />
+    <Compile Include="Components\MBDot.cs" />
+    <Compile Include="Components\MBLine.cs" />
     <Compile Include="Pages\EntryPage.xaml.cs">
       <DependentUpon>EntryPage.xaml</DependentUpon>
     </Compile>
