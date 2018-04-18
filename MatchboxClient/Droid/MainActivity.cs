@@ -48,7 +48,7 @@ namespace Matchbox.Droid
             {
                 // Sign in with Facebook login using a server-managed flow.
                 user = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(this,
-                    MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
+                    MobileServiceAuthenticationProvider.Google, "matchbox");
                 if (user != null)
                 {
                     message = string.Format("You are now signed-in as {0}.",
