@@ -36,6 +36,7 @@
     <Compile Include="Abstractions\IAuthenticate.cs" />
     <Compile Include="Abstractions\ICloudService.cs" />
     <Compile Include="Abstractions\ICloudTable.cs" />
+    <Compile Include="Abstractions\ILoginProvider.cs" />
     <Compile Include="Abstractions\TableData.cs" />
     <Compile Include="Apps\Matchboxes.cs" />
     <Compile Include="Apps\Charts.cs" />
