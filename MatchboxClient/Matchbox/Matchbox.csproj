@@ -36,6 +36,7 @@
     <Compile Include="Abstractions\IAuthenticate.cs" />
     <Compile Include="Abstractions\ICloudService.cs" />
     <Compile Include="Abstractions\ICloudTable.cs" />
+    <Compile Include="Abstractions\ILoginProvider.cs" />
     <Compile Include="Abstractions\TableData.cs" />
     <Compile Include="Apps\Matchboxes.cs" />
     <Compile Include="Apps\Charts.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Managers\TodoItemManager.cs" />
     <Compile Include="Utilities\RandomHelper.cs" />
+    <Compile Include="Utilities\ServiceLocator.cs" />
     <Compile Include="ViewModels\EntryPageViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailViewModel.cs" />
     <Compile Include="ViewModels\TaskListViewModel.cs" />

@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Azure.Mobile.Client": "4.0.1",
+    "Microsoft.Azure.Mobile.Client": "4.0.2",
     "UrhoSharp.Forms": "1.8.93",
-    "Xamarin.Forms": "2.3.4.247"
+    "Xamarin.Forms": "2.5.1.444934"
   },
   "frameworks": {
     "Xamarin.iOS,Version=v1.0": {}

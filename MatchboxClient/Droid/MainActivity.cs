@@ -14,6 +14,9 @@ using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
+using Matchbox.Droid.Services;
+using Matchbox.Abstractions;
+
 namespace Matchbox.Droid
 {
 	[Activity (Label = "Matchbox.Droid",
@@ -21,7 +24,7 @@ namespace Matchbox.Droid
 		MainLauncher = true,
 		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
 		Theme = "@android:style/Theme.Holo.Light")]
-	public class MainActivity : FormsApplicationActivity, IAuthenticate
+	public class MainActivity : FormsApplicationActivity
 	{
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -36,39 +39,13 @@ namespace Matchbox.Droid
             // Initialize Xamarin Forms
             Forms.Init (this, bundle);
 
+            var loginProvider = (DroidLoginProvider)DependencyService.Get<ILoginProvider>();
+            loginProvider.Init(this);
+
             // Load the main application
             LoadApplication (new App ());
 		}
 
-        public async Task<bool> Authenticate()
-        {
-            var success = false;
-            var message = string.Empty;
-            try
-            {
-                // Sign in with Facebook login using a server-managed flow.
-                user = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(this,
-                    MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
-                if (user != null)
-                {
-                    message = string.Format("You are now signed-in as {0}.",
-                        user.UserId);
-                    success = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                message = ex.Message;
-            }
-
-            // Display the success or failure message.
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.SetMessage(message);
-            builder.SetTitle("Sign-in result");
-            builder.Create().Show();
-
-            return success;
-        }
     }
 }
 

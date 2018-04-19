@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.WindowsAzure.MobileServices;
+
 namespace Matchbox.Abstractions
 {
-    public interface ICloudService
+    public interface ILoginProvider
     {
-        ICloudTable<T> GetTable<T>() where T : TableData;
-
-        Task LoginAsync();
+        Task LoginAsync(MobileServiceClient client);
     }
 }

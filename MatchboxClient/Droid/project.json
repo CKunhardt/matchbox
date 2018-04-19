@@ -1,15 +1,16 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Azure.Mobile.Client": "4.0.1",
+    "Microsoft.Azure.Mobile.Client": "4.0.2",
     "UrhoSharp.Forms": "1.8.93",
-    "Xamarin.Android.Support.Design": "23.3.0",
-    "Xamarin.Android.Support.v4": "23.3.0",
-    "Xamarin.Android.Support.v7.AppCompat": "23.3.0",
-    "Xamarin.Android.Support.v7.CardView": "23.3.0",
-    "Xamarin.Android.Support.v7.MediaRouter": "23.3.0",
-    "Xamarin.Forms": "2.3.4.247"
+    "Xamarin.Android.Support.CustomTabs": "27.0.2",
+    "Xamarin.Android.Support.Design": "27.0.2",
+    "Xamarin.Android.Support.v4": "27.0.2",
+    "Xamarin.Android.Support.v7.AppCompat": "27.0.2",
+    "Xamarin.Android.Support.v7.CardView": "27.0.2",
+    "Xamarin.Android.Support.v7.MediaRouter": "27.0.2",
+    "Xamarin.Forms": "2.5.1.444934"
   },
   "frameworks": {
-    "MonoAndroid,Version=v7.1": {}
+    "MonoAndroid,Version=v8.1": {}
   }
 }

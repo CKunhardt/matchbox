@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Matchbox.Abstractions;
 using Xamarin.Forms;
 
+using Matchbox.Utilities;
+
 namespace Matchbox.ViewModels
 {
     public class EntryPageViewModel : BaseViewModel
@@ -24,6 +26,8 @@ namespace Matchbox.ViewModels
 
             try
             {
+                var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
+                await cloudService.LoginAsync();
                 Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.UrhoPage());
             }
             catch (Exception ex)
