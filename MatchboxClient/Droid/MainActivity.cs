@@ -39,7 +39,8 @@ namespace Matchbox.Droid
             // Initialize Xamarin Forms
             Forms.Init (this, bundle);
 
-            ((DroidLoginProvider)DependencyService.Get<ILoginProvider>()).Init(this);
+            var loginProvider = (DroidLoginProvider)DependencyService.Get<ILoginProvider>();
+            loginProvider.Init(this);
 
             // Load the main application
             LoadApplication (new App ());

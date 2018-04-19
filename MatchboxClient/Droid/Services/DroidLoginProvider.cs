@@ -12,8 +12,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-using Matchbox.Abstractions;
+using Xamarin.Auth;
 
+using Matchbox.Abstractions;
+using Matchbox.Droid.Services;
+
+[assembly: Xamarin.Forms.Dependency(typeof(DroidLoginProvider))]
 namespace Matchbox.Droid.Services
 {
     public class DroidLoginProvider : ILoginProvider

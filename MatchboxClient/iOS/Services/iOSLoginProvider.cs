@@ -10,7 +10,9 @@ using UIKit;
 using Microsoft.WindowsAzure.MobileServices;
 
 using Matchbox.Abstractions;
+using Matchbox.iOS.Services;
 
+[assembly: Xamarin.Forms.Dependency(typeof(iOSLoginProvider))]
 namespace Matchbox.iOS.Services
 {
     public class iOSLoginProvider : ILoginProvider

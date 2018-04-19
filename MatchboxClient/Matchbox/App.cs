@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Matchbox.Abstractions;
 using Matchbox.Services;
 using Matchbox.Pages;
+using Matchbox.Utilities;
 
 namespace Matchbox
 {
@@ -14,10 +15,10 @@ namespace Matchbox
         
 		public App ()
 		{
-            CloudService = new AzureCloudService();
-
-			// The root page of your application
-			MainPage = new EntryPage();
+            //CloudService = new AzureCloudService();
+            ServiceLocator.Instance.Add<ICloudService, AzureCloudService>();
+            // The root page of your application
+            MainPage = new EntryPage();
 		}
 
         protected override void OnStart ()

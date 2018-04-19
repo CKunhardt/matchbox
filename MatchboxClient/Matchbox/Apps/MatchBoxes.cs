@@ -12,9 +12,7 @@ namespace Matchbox
 {
     public class MatchBoxes : Application
     {
-        bool movementsEnabled;
         Scene scene;
-        Node plotNode;
         Camera camera;
         PhysicsWorld2D physicsWorld;
 
