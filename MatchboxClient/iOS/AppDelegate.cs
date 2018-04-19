@@ -11,6 +11,9 @@ using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+using Matchbox.Abstractions;
+using Matchbox.iOS.Services;
+
 namespace Matchbox.iOS
 {
 	[Register ("AppDelegate")]
@@ -28,6 +31,12 @@ namespace Matchbox.iOS
 
 			return base.FinishedLaunching(app, options);
 		}
-	}
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            var loginProvider = (iOSLoginProvider)DependencyService.Get<ILoginProvider>();
+            return loginProvider.client.ResumeWithURL(url);
+        }
+    }
 }
 

@@ -17,8 +17,11 @@ namespace Matchbox.iOS.Services
 {
     public class iOSLoginProvider : ILoginProvider
     {
+        public MobileServiceClient client { get; private set; }
+
         public async Task LoginAsync(MobileServiceClient client)
         {
+            this.client = client;
             await client.LoginAsync(RootView, MobileServiceAuthenticationProvider.Google, "matchbox");
         }
 
