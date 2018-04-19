@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Matchbox</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.xamarin.sample.Matchbox</string>
+	<string>com.Essentially.Matchbox</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -61,5 +61,18 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>Matchbox</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Callback</string>
+			<key>CFBundleURLName</key>
+			<string>CFBundleURLName</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>matchbox</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
