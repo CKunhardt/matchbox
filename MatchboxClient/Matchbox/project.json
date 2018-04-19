@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Azure.Mobile.Client": "4.0.1",
-    "NETStandard.Library": "1.6.1",
+    "Microsoft.Azure.Mobile.Client": "4.0.2",
+    "NETStandard.Library": "2.0.2",
     "UrhoSharp.Forms": "1.8.93",
-    "Xamarin.Forms": "2.3.4.247"
+    "Xamarin.Forms": "2.5.1.444934"
   },
   "frameworks": {
     "netstandard1.4": {
