@@ -12,7 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 using Matchbox.Abstractions;
-using Matchbox.iOS.Services;
+using Matchbox.Utilities;
 
 namespace Matchbox.iOS
 {
@@ -34,8 +34,8 @@ namespace Matchbox.iOS
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
-            var loginProvider = (iOSLoginProvider)DependencyService.Get<ILoginProvider>();
-            return loginProvider.client.ResumeWithURL(url);
+            var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
+            return cloudService.GetClient().ResumeWithURL(url);
         }
     }
 }

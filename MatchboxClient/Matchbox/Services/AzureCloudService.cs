@@ -19,6 +19,10 @@ namespace Matchbox.Services
             return new AzureCloudTable<T>(client);
         }
 
+        public MobileServiceClient GetClient() {
+            return client;
+        }
+
         public Task LoginAsync()
         {
             var loginProvider = DependencyService.Get<ILoginProvider>();
