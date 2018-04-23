@@ -28,7 +28,7 @@ namespace Matchbox.ViewModels
             {
                 var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
                 await cloudService.LoginAsync();
-                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.UrhoPage());
+                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.MainPage());
             }
             catch (Exception ex)
             {
