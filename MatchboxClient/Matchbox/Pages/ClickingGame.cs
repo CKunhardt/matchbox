@@ -35,7 +35,7 @@ namespace Matchbox.Pages
             var winLoss = new Label
             {
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(EntryCell)),
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
