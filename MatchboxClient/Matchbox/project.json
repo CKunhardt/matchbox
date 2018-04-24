@@ -3,6 +3,7 @@
     "Microsoft.Azure.Mobile.Client": "4.0.2",
     "NETStandard.Library": "2.0.2",
     "UrhoSharp.Forms": "1.8.93",
+    "Xamarin.Auth": "1.6.0.2",
     "Xamarin.Forms": "2.5.1.444934"
   },
   "frameworks": {

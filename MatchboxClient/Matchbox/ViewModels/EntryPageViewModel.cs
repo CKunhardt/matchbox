@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Matchbox.Abstractions;
+
 using Xamarin.Forms;
 
+using Matchbox.Abstractions;
 using Matchbox.Utilities;
 
 namespace Matchbox.ViewModels
@@ -15,10 +16,32 @@ namespace Matchbox.ViewModels
             Title = "Task List";
         }
 
-        Command loginCmd;
-        public Command LoginCommand => loginCmd ?? (loginCmd = new Command(async () => await ExecuteLoginCommand().ConfigureAwait(false)));
+        Command loginWithGoogle;
+        public Command LoginWithGoogle => loginWithGoogle ?? (loginWithGoogle = new Command(async () => await ExecuteLoginWithGoogle().ConfigureAwait(false)));
 
-        async Task ExecuteLoginCommand()
+        async Task ExecuteLoginWithGoogle()
+        {
+            if (IsBusy)
+                return;
+            IsBusy = true;
+
+            try
+            {
+                var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
+                await cloudService.LoginAsync();
+                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.UrhoPage());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[Login] Error = {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        async Task ExecuteLoginWithUsername()
         {
             if (IsBusy)
                 return;

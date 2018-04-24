@@ -17,9 +17,9 @@ namespace Matchbox.iOS.Services
 {
     public class iOSLoginProvider : ILoginProvider
     {
-        public async Task LoginAsync(MobileServiceClient client)
+        public async Task<MobileServiceUser> LoginAsync(MobileServiceClient client)
         {
-            await client.LoginAsync(RootView, MobileServiceAuthenticationProvider.Google, "matchbox");
+            return await client.LoginAsync(RootView, MobileServiceAuthenticationProvider.Google, "matchbox");
         }
 
         public UIViewController RootView => UIApplication.SharedApplication.KeyWindow.RootViewController;
