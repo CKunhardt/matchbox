@@ -29,28 +29,6 @@ namespace Matchbox.ViewModels
             {
                 var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
                 await cloudService.LoginAsync();
-                Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.UrhoPage());
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[Login] Error = {ex.Message}");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        async Task ExecuteLoginWithUsername()
-        {
-            if (IsBusy)
-                return;
-            IsBusy = true;
-
-            try
-            {
-                var cloudService = ServiceLocator.Instance.Resolve<ICloudService>();
-                await cloudService.LoginAsync();
                 Application.Current.MainPage = new NavigationPage(new Matchbox.Pages.MainPage());
             }
             catch (Exception ex)
