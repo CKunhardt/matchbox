@@ -1,8 +1,9 @@
-﻿namespace Matchbox.Models
+﻿using Matchbox.Abstractions;
+
+namespace Matchbox.Models
 {
-    public class User
+    public class User : TableData
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string lastTime { get; set; }
     }
 }

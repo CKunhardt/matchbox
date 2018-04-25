@@ -48,7 +48,9 @@
     <Compile Include="Pages\EntryPage.xaml.cs">
       <DependentUpon>EntryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.cs" />
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TaskDetail.xaml.cs">
       <DependentUpon>TaskDetail.xaml</DependentUpon>
     </Compile>
@@ -67,6 +69,7 @@
     <Compile Include="Utilities\RandomHelper.cs" />
     <Compile Include="Utilities\ServiceLocator.cs" />
     <Compile Include="ViewModels\EntryPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\TaskDetailViewModel.cs" />
     <Compile Include="ViewModels\TaskListViewModel.cs" />
   </ItemGroup>
@@ -88,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\TaskDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
