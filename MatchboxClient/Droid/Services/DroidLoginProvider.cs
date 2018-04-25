@@ -35,7 +35,7 @@ namespace Matchbox.Droid.Services
         #region ILoginProvider Interface
         public MobileServiceUser RetrieveTokenFromSecureStore()
         {
-            var accounts = AccountStore.FindAccountsForService("tasklist");
+            var accounts = AccountStore.FindAccountsForService("matchbox");
             if (accounts != null)
             {
                 foreach (var acct in accounts)
@@ -58,17 +58,17 @@ namespace Matchbox.Droid.Services
         {
             var account = new Account(user.UserId);
             account.Properties.Add("token", user.MobileServiceAuthenticationToken);
-            AccountStore.Save(account, "tasklist");
+            AccountStore.Save(account, "matchbox");
         }
 
         public void RemoveTokenFromSecureStore()
         {
-            var accounts = AccountStore.FindAccountsForService("tasklist");
+            var accounts = AccountStore.FindAccountsForService("matchbox");
             if (accounts != null)
             {
                 foreach (var acct in accounts)
                 {
-                    AccountStore.Delete(acct, "tasklist");
+                    AccountStore.Delete(acct, "matchbox");
                 }
             }
         }
