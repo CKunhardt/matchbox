@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
+
+using Microsoft.WindowsAzure.MobileServices;
 
 using Android.App;
 using Android.Content;
@@ -22,16 +23,61 @@ namespace Matchbox.Droid.Services
 {
     public class DroidLoginProvider : ILoginProvider
     {
-        Context context;
+        public Context RootView { get; private set; }
+        public AccountStore AccountStore { get; private set; }
 
         public void Init(Context context)
         {
-            this.context = context;
+            RootView = context;
+            AccountStore = AccountStore.Create(context);
         }
 
-        public async Task LoginAsync(MobileServiceClient client)
+        #region ILoginProvider Interface
+        public MobileServiceUser RetrieveTokenFromSecureStore()
         {
-            await client.LoginAsync(context, MobileServiceAuthenticationProvider.Google, "matchbox");
+            var accounts = AccountStore.FindAccountsForService("tasklist");
+            if (accounts != null)
+            {
+                foreach (var acct in accounts)
+                {
+                    string token;
+
+                    if (acct.Properties.TryGetValue("token", out token))
+                    {
+                        return new MobileServiceUser(acct.Username)
+                        {
+                            MobileServiceAuthenticationToken = token
+                        };
+                    }
+                }
+            }
+            return null;
         }
+
+        public void StoreTokenInSecureStore(MobileServiceUser user)
+        {
+            var account = new Account(user.UserId);
+            account.Properties.Add("token", user.MobileServiceAuthenticationToken);
+            AccountStore.Save(account, "tasklist");
+        }
+
+        public void RemoveTokenFromSecureStore()
+        {
+            var accounts = AccountStore.FindAccountsForService("tasklist");
+            if (accounts != null)
+            {
+                foreach (var acct in accounts)
+                {
+                    AccountStore.Delete(acct, "tasklist");
+                }
+            }
+        }
+
+        public async Task<MobileServiceUser> LoginAsync(MobileServiceClient client)
+        {
+            // Server Flow
+            return await client.LoginAsync(RootView, MobileServiceAuthenticationProvider.Google, "matchbox");
+        }
+        #endregion
     }
 }

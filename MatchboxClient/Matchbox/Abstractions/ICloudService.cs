@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Microsoft.WindowsAzure.MobileServices;
 
+using Matchbox.Models;
 
 namespace Matchbox.Abstractions
 {
@@ -15,6 +16,9 @@ namespace Matchbox.Abstractions
 
         MobileServiceClient GetClient();
 
-        Task LoginAsync();
+        Task<MobileServiceUser> LoginAsync();
+
+        Task<AppServiceIdentity> GetIdentityAsync();
+
     }
 }

@@ -3,11 +3,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using Urho;
-using Urho.Forms;
-
-using Matchbox.Components;
-
 namespace Matchbox.Pages
 {
     public class ClickingGame : ContentPage
@@ -25,7 +20,7 @@ namespace Matchbox.Pages
             userScore = 0;
             opponentScore = 10000;
             timesClicked = 0;
-            clicksReq = 50;
+            clicksReq = 25;
             firstClick = false;
             timer = new System.Diagnostics.Stopwatch();
 
@@ -51,6 +46,43 @@ namespace Matchbox.Pages
                 await Navigation.PopModalAsync();
             };
 
+            void refreshButt(Button refMainButt, int clickAmt)
+            {
+                // var newMainButt = new Button { };
+                refMainButt.Text = clickAmt.ToString();
+
+                int randomX = (new Random()).Next(0, 3);
+                int randomY = (new Random()).Next(0, 3);
+
+                if (randomX == 0)
+                {
+                    refMainButt.HorizontalOptions = LayoutOptions.StartAndExpand;
+                }
+                else if (randomX == 1)
+                {
+                    refMainButt.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                }
+                else if (randomX == 2)
+                {
+                    refMainButt.HorizontalOptions = LayoutOptions.EndAndExpand;
+                }
+                else { refMainButt.HorizontalOptions = LayoutOptions.CenterAndExpand; }
+
+                if (randomY == 0)
+                {
+                    refMainButt.VerticalOptions = LayoutOptions.StartAndExpand;
+                }
+                else if (randomY == 1)
+                {
+                    refMainButt.VerticalOptions = LayoutOptions.CenterAndExpand;
+                }
+                else if (randomY == 2)
+                {
+                    refMainButt.VerticalOptions = LayoutOptions.EndAndExpand;
+                }
+                else { refMainButt.VerticalOptions = LayoutOptions.CenterAndExpand; }
+            }
+
             var mainButt = new Button
             {
                 Text = "tap me",
@@ -58,10 +90,10 @@ namespace Matchbox.Pages
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
-            mainButt.Clicked += async (sender, e) =>
+            mainButt.Clicked += (sender, e) =>
             {
                 timesClicked++;
-                mainButt.Text = (clicksReq - timesClicked).ToString();
+                refreshButt(mainButt, clicksReq - timesClicked);
                 if (timesClicked==clicksReq)
                 {
                     timer.Stop();

@@ -8,6 +8,7 @@
     "Xamarin.Android.Support.v7.AppCompat": "27.0.2",
     "Xamarin.Android.Support.v7.CardView": "27.0.2",
     "Xamarin.Android.Support.v7.MediaRouter": "27.0.2",
+    "Xamarin.Auth": "1.6.0.2",
     "Xamarin.Forms": "2.5.1.444934"
   },
   "frameworks": {

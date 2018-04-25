@@ -9,8 +9,8 @@
                      VerticalOptions="Center">
             <Button BackgroundColor="Teal"
                     BorderRadius="10"
-                    Command="{Binding LoginCommand}"
-                    Text="Login"
+                    Command="{Binding LoginWithGoogle}"
+                    Text="Login with Google"
                     TextColor="White" />
         </StackLayout>
     </ContentPage.Content>

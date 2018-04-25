@@ -43,6 +43,8 @@
     <Compile Include="Components\MBBar.cs" />
     <Compile Include="Components\MBDot.cs" />
     <Compile Include="Components\MBLine.cs" />
+    <Compile Include="Models\AppServiceIdentity.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Pages\EntryPage.xaml.cs">
       <DependentUpon>EntryPage.xaml</DependentUpon>
     </Compile>
@@ -58,6 +60,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Services\AzureCloudService.cs" />
     <Compile Include="Services\AzureCloudTable.cs" />
+    <Compile Include="Utilities\AuthenticationDelegationHandler.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Managers\TodoItemManager.cs" />

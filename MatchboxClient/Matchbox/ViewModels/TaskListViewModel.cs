@@ -3,9 +3,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
 using Matchbox.Abstractions;
 using Matchbox.Models;
-using Xamarin.Forms;
 
 namespace Matchbox.ViewModels
 {
