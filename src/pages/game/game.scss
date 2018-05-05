@@ -1,0 +1,23 @@
+page-game {
+    .game-container {
+        display: -webkit-flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        height: 100%;
+    }
+    .game-container > .row {
+        -webkit-flex: 1;
+        flex: 1;
+    }
+    .header {
+        -webkit-flex: 1.5 !important;
+        flex: 1.5 !important;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    .button-row {
+        -webkit-align-items: center;
+        align-items: center;
+    }
+}
