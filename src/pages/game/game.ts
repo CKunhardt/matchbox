@@ -42,7 +42,7 @@ export class GamePage {
 
   findMatch(): void {
     this.tapCount = 30;
-    this.buttonPos = (this.tapCount % 6) + 1;
+    this.buttonPos = 1;
     this.gameStarted = true;
     this.startTime = Date.now();
   }
@@ -50,7 +50,6 @@ export class GamePage {
   advance(): void {
     if(this.tapCount > 0){
       this.tapCount--;
-      this.buttonPos = (this.tapCount % 6) + 1;
     }
     if(this.tapCount == 0){
       this.endTime = Date.now();
