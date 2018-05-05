@@ -22,7 +22,7 @@ export class AuthProvider {
           .database()
           .ref('/userProfile')
           .child(newUser.uid)
-          .set({email: email, lastTime: "TBD", mu: 25.000, sigma: 8.333, tsr: 0});
+          .set({email: email, lastTime: "TBD", bestTime: "TBD", mu: 25.000, sigma: 8.333, tsr: 0});
       });
   }
 
@@ -32,21 +32,25 @@ export class AuthProvider {
 
   getCurrentUser() : Promise<IUser> {
     var user = firebase.auth().currentUser;
+    return this.getUser(user.uid);
+  }
+
+  getUser(uid: string) : Promise<IUser> {
     return firebase
-      .database()
-      .ref('/userProfile/' + user.uid)
-      .once('value')
-      .then(snapshot => {
-        return <IUser>{
-          Id: user.uid,
-          EmailAddress: snapshot.val().email,
-          LastTime: snapshot.val().lastTime,
-          BestTime: snapshot.val().bestTime,
-          Mu: snapshot.val().mu,
-          Sigma: snapshot.val().sigma,
-          TSR: snapshot.val().tsr
-        };
-      });
+    .database()
+    .ref('/userProfile/' + uid)
+    .once('value')
+    .then(snapshot => {
+      return <IUser>{
+        Id: uid,
+        EmailAddress: snapshot.val().email,
+        LastTime: snapshot.val().lastTime,
+        BestTime: snapshot.val().bestTime,
+        Mu: snapshot.val().mu,
+        Sigma: snapshot.val().sigma,
+        TSR: snapshot.val().tsr
+      };
+    });
   }
 
   updateUserLastTime(time: number) : Promise<void>{
@@ -64,6 +68,17 @@ export class AuthProvider {
     });
   }
 
+  updateUserTSR(user: IUser) : Promise<void> {
+    var updates = {};
+    updates['mu'] = user.Mu;
+    updates['sigma'] = user.Sigma;
+    updates['tsr'] = user.TSR;
+    return firebase
+      .database()
+      .ref('/userProfile/' + user.Id + '/')
+      .update(updates);
+  }
+
   findMatchingUsers() : Promise<IUser[]>{
     var user = firebase.auth().currentUser;
     return firebase
@@ -74,7 +89,6 @@ export class AuthProvider {
       .then(snapshot => {
         var users = [];
         snapshot.forEach(userChild => {
-          console.log(userChild.key);
           if(userChild.key != user.uid){
             users.push(<IUser>{
               Id: userChild.key,
