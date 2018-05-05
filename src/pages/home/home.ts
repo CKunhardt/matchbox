@@ -18,7 +18,11 @@ export class HomePage {
   ) {}
 
   findMatch(): void {
-    this.navCtrl.setRoot('game');
+    this.navCtrl.push('find-match');
+  }
+
+  viewMatches() : void {
+    this.navCtrl.push('view-matches');
   }
 
   logout(): void {

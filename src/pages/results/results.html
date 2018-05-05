@@ -17,8 +17,27 @@
   Results Page
 
   <ion-item>
-    Your time was: {{currentUser?.LastTime}} seconds.
+  Your time was: {{currentUser?.LastTime}} seconds.
   </ion-item>
+
+  <ion-item>
+    You are Player {{playerNum}}
+  </ion-item>
+
+  <ion-item-group>
+    <ion-label>
+      Match Info:
+    </ion-label>
+    <ion-item>
+      Player 1's time: {{lastMatch?.Player1Time}}
+    </ion-item>
+    <ion-item>
+      Player 2's time: {{lastMatch?.Player2Time}}
+    </ion-item>
+    <ion-item>
+      Winner: {{lastMatch?.Winner}}
+    </ion-item>
+  </ion-item-group>
 
   <button ion-button block clear (click)="goHome()">
     Back to Home

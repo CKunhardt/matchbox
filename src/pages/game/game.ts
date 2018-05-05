@@ -23,6 +23,9 @@ export class GamePage {
   public gameStarted: boolean;
   public buttonPos: number;
 
+  public opponentId: string;
+  public matchID: string;
+
   private startTime: number;
   private endTime: number;
 
@@ -31,6 +34,8 @@ export class GamePage {
     public navParams: NavParams,
     public authProvider: AuthProvider
   ) {
+    this.opponentId = this.navParams.get("opponentId");
+    this.matchID = this.navParams.get('matchID');
     this.gameStarted = false;
     this.buttonPos = 0;
   }
@@ -53,17 +58,26 @@ export class GamePage {
       this.resultTime = Math.floor((this.endTime - this.startTime))/1000;
       let self = this;
       this.authProvider.updateUserLastTime(this.resultTime).then(function(){
-        self.navCtrl.setRoot('results');
-      })
+        if(self.matchID != null){
+          self.authProvider.updateMatch(self.resultTime, self.matchID).then(_ => {
+            self.navCtrl.setRoot('results', {
+              matchID: self.matchID,
+              playerNum: "2"
+            });
+          });
+        } else if(self.opponentId != null){
+          self.authProvider.createMatch(self.resultTime, self.opponentId).then(matchID => {
+            self.navCtrl.setRoot('results', {
+              matchID: matchID,
+              playerNum: "1"
+            });
+          });
+        }
+      });
     }
   }
 
   ionViewWillLeave() {
     this.tapCount = null;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GamePage');
-  }
-
 }

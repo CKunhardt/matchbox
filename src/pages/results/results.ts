@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { IUser } from './../../interfaces/user';
+import { IMatch } from './../../interfaces/match';
+
 import { HomePage } from '../home/home';
 
 /**
@@ -21,12 +23,18 @@ import { HomePage } from '../home/home';
 export class ResultsPage {
 
   public currentUser : IUser;
+  public matchID: string;
+  public lastMatch: IMatch;
+  public playerNum: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider
-    ) {}
+    ) {
+      this.matchID = this.navParams.get("matchID");
+      this.playerNum = this.navParams.get("playerNum");
+    }
 
   goHome(): void {
     this.navCtrl.setRoot(HomePage);
@@ -35,6 +43,7 @@ export class ResultsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultsPage');
     this.authProvider.getCurrentUser().then(user => this.currentUser = user);
+    this.authProvider.getMatch(this.matchID).then(match => this.lastMatch = match);
   }
 
 }
