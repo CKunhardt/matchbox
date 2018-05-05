@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let user of users">
       <button ion-button clear block (click)="startMatch(user.Id)">
-        TSR: {{user?.TSR}} | User: {{user?.Id?.substring(0,8)}}
+        {{user?.Username}} | TSR: {{math.round(user?.TSR)}}
       </button>
     </ion-item>
   </ion-list>

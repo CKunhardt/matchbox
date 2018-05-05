@@ -20,12 +20,13 @@ import { IUser } from './../../interfaces/user';
 export class FindMatchPage {
 
   public users: IUser[];
+  public math: Math;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider
-    ) {}
+  ) {this.math = Math}
 
   ionViewDidLoad() {
     this.authProvider.findMatchingUsers().then(users =>{

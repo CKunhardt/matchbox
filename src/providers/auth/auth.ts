@@ -13,7 +13,7 @@ export class AuthProvider {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
-  signupUser(email: string, password: string) : Promise<any> {
+  signupUser(username: string, email: string, password: string) : Promise<any> {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -22,7 +22,7 @@ export class AuthProvider {
           .database()
           .ref('/userProfile')
           .child(newUser.uid)
-          .set({email: email, lastTime: "TBD", bestTime: "TBD", mu: 25.000, sigma: 8.333, tsr: 0});
+          .set({username: username, email: email, lastTime: "TBD", bestTime: "TBD", mu: 25.000, sigma: 8.333, tsr: 0});
       });
   }
 
@@ -43,6 +43,7 @@ export class AuthProvider {
     .then(snapshot => {
       return <IUser>{
         Id: uid,
+        Username: snapshot.val().username,
         EmailAddress: snapshot.val().email,
         LastTime: snapshot.val().lastTime,
         BestTime: snapshot.val().bestTime,
@@ -92,6 +93,7 @@ export class AuthProvider {
           if(userChild.key != user.uid){
             users.push(<IUser>{
               Id: userChild.key,
+              Username: userChild.val().username,
               EmailAddress: userChild.val().email,
               LastTime: userChild.val().lastTime,
               BestTime: userChild.val().bestTime,
